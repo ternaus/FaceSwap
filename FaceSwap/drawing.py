@@ -27,9 +27,9 @@ def drawMesh(img, shape, mesh, color=(255, 0, 0)):
         point2 = shape[triangle[1]].astype(np.int32)
         point3 = shape[triangle[2]].astype(np.int32)
 
-        cv2.line(img, (point1[0], point1[1]), (point2[0], point2[1]), (255, 0, 0), 1)
-        cv2.line(img, (point2[0], point2[1]), (point3[0], point3[1]), (255, 0, 0), 1)
-        cv2.line(img, (point3[0], point3[1]), (point1[0], point1[1]), (255, 0, 0), 1)
+        cv2.line(img, (point1[0], point1[1]), (point2[0], point2[1]), color, 1)
+        cv2.line(img, (point2[0], point2[1]), (point3[0], point3[1]), color, 1)
+        cv2.line(img, (point3[0], point3[1]), (point1[0], point1[1]), color, 1)
 
 
 def drawProjectedShape(img, x, projection, mesh, params, lockedTranslation=False, idxs3D=None):

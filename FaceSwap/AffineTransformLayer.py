@@ -70,10 +70,10 @@ class AffineTransformLayer(MergeLayer):
 
         return self.affine_transform(img[0], A, t)
 
-    def get_output_shape_for(self, input_shapes):
-        return (None, 1, self.out_img_height, self.out_img_width)
+    def get_output_shape_for(self):
+        return None, 1, self.out_img_height, self.out_img_width
 
-    def get_output_for(self, inputs, **kwargs):
-        outImgs, updates = theano.scan(self.affine_transform_helper, inputs)
+    def get_output_for(self, inputs):
+        outImgs, _ = theano.scan(self.affine_transform_helper, inputs)
 
         return outImgs

@@ -52,6 +52,6 @@ class LandmarkImageLayer(Layer):
         return img
 
     def get_output_for(self, input, **kwargs):
-        output, updates = theano.scan(self.draw_landmarks, [input])
+        output, _ = theano.scan(self.draw_landmarks, [input])
 
         return output

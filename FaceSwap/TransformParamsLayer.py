@@ -9,8 +9,9 @@ class TransformParamsLayer(Layer):
 
         self.mean_shape = mean_shape
 
-    def get_output_shape_for(self, input_shapes):
-        return (None, 6)
+    @staticmethod
+    def get_output_shape_for():
+        return None, 6
 
     def bestFit(self, transformed_shape):
         destination = self.mean_shape
@@ -37,7 +38,7 @@ class TransformParamsLayer(Layer):
 
         return T.concatenate((A.flatten(), destMean - srcMean))
 
-    def get_output_for(self, input, **kwargs):
-        transforms, updates = theano.scan(self.bestFit, [input])
+    def get_output_for(self, input):
+        transforms, _ = theano.scan(self.bestFit, [input])
 
         return transforms

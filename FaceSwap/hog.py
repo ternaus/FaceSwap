@@ -113,10 +113,11 @@ def gradientsAroundPoint(img, point, blockSizeX, blockSizeY):
 
 
 def getHistogram(magnitudes, angles, nBins, start, cellSize, interpolate):
-    binValues = _hog.histogram(angles, magnitudes, 9, (0, 180), interpolate, start, cellSize)
+    # It was 9 instead of nBins in the function before refactoring.
+    binValues = _hog.histogram(angles, magnitudes, nBins, (0, 180), interpolate, start, cellSize)
 
     if interpolate == 2:
-        binValues = binValues.reshape((3, 3, 9))
+        binValues = binValues.reshape((3, 3, nBins))
     return binValues
 
 

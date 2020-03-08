@@ -15,4 +15,4 @@ workflows:
   version: 2
   build:
     jobs:
-      - Python_3.7
+      - Python_3.6

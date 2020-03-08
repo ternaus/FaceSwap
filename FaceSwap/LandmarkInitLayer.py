@@ -7,10 +7,11 @@ class LandmarkInitLayer(Layer):
 
         self.init_landmarks = init_landmarks.flatten()
 
-    def get_output_shape_for(self, input_shape):
+    @staticmethod
+    def get_output_shape_for(input_shape):
         return input_shape
 
-    def get_output_for(self, input, **kwargs):
+    def get_output_for(self, input):
         output = input + self.init_landmarks
 
         return output

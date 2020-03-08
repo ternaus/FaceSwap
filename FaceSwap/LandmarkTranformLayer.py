@@ -25,11 +25,12 @@ class LandmarkTransformLayer(MergeLayer):
         output = (T.dot(landmarks.reshape((-1, 2)), A) + t).flatten()
         return output
 
-    def get_output_shape_for(self, input_shapes):
+    @staticmethod
+    def get_output_shape_for(input_shapes):
         output_shape = list(input_shapes[0])
         return tuple(output_shape)
 
-    def get_output_for(self, inputs, **kwargs):
-        outImgs, updates = theano.scan(self.affine_transform_helper, inputs)
+    def get_output_for(self, inputs):
+        outImgs, _ = theano.scan(self.affine_transform_helper, inputs)
 
         return outImgs

@@ -2,7 +2,7 @@ import cv2
 import dlib
 import numpy as np
 
-from FaceSwap import FaceAlignment
+from FaceSwap.FaceAlignment import FaceAlignment
 from FaceSwap import FaceRendering
 from FaceSwap import ImageProcessing
 from FaceSwap import NonLinearLeastSquares
