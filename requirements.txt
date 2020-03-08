@@ -1,2 +1,6 @@
 black
+dlib
+drawing
 flake8
+pygame
+pyopengl
