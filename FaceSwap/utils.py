@@ -1,6 +1,6 @@
-from FaceSwap import NonLinearLeastSquares
+from FaceSwap import NonLinearLeastSquares, models
 import cv2
-from FaceSwap import models
+
 import numpy as np
 
 
