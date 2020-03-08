@@ -26,6 +26,7 @@ def redirect_stdout(target):
 
 # Suppress "hello pygame" message
 with redirect_stdout(open(os.devnull, 'w')):
+    from FaceSwap.
     import FaceSwap.models as models
     import FaceSwap.NonLinearLeastSquares as NonLinearLeastSquares
     import FaceSwap.ImageProcessing as ImageProcessing
