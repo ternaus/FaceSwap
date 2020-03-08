@@ -32,7 +32,7 @@ class Model:
 
     # zwraca inny zbior przykladowych parametrow
     @abstractmethod
-    def getInitialParameters(self):
+    def getInitialParameters(self, x, y):
         pass
 
 

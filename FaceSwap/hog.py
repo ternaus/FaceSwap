@@ -22,18 +22,16 @@ def hog(inImg, inPoints, nBins=9, blockSize=4, cellSize=4, interpolate=2):
     else:
         img = np.array(inImg).astype(np.uint8)
 
-    for i in range(len(points)):
+    for point_id, point in enumerate(points):
         if isinstance(_blockSize, collections.Iterable):
-            if isinstance(_blockSize[i], collections.Iterable):
-                blockSize = _blockSize[i]
+            if isinstance(_blockSize[point_id], collections.Iterable):
+                blockSize = _blockSize[point_id]
             else:
-                blockSize = [_blockSize[i], _blockSize[i]]
-            cellSize = _cellSize[i]
+                blockSize = [_blockSize[point_id], _blockSize[point_id]]
+            cellSize = _cellSize[point_id]
         else:
             blockSize = [_blockSize, _blockSize]
             cellSize = _cellSize
-
-        point = points[i]
 
         gradsX, gradsY = _hog.gradientsAroundPoint(
             img, (point[0], point[1]), blockSize[0] * cellSize, blockSize[1] * cellSize

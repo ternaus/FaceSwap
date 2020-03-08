@@ -38,7 +38,7 @@ class TransformParamsLayer(Layer):
 
         return T.concatenate((A.flatten(), destMean - srcMean))
 
-    def get_output_for(self, input):
-        transforms, _ = theano.scan(self.bestFit, [input])
+    def get_output_for(self, x):
+        transforms, _ = theano.scan(self.bestFit, [x])
 
         return transforms

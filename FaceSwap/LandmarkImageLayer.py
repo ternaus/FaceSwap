@@ -22,7 +22,7 @@ class LandmarkImageLayer(Layer):
         )
 
     def get_output_shape_for(self, input_shape):
-        return (input_shape[0], 1, self.img_shape[0], self.img_shape[1])
+        return input_shape[0], 1, self.img_shape[0], self.img_shape[1]
 
     def draw_landmarks_helper(self, landmark):
         img = T.zeros((1, self.img_shape[0], self.img_shape[1]))
@@ -38,7 +38,7 @@ class LandmarkImageLayer(Layer):
         return img
 
     def draw_landmarks(self, input):
-        landmarks = input.reshape((-1, 2))
+        landmarks = input.copy().reshape((-1, 2))
         landmarks = T.set_subtensor(
             landmarks[:, 0], T.clip(landmarks[:, 0], self.half_size, self.img_shape[1] - 1 - self.half_size)
         )
@@ -46,12 +46,12 @@ class LandmarkImageLayer(Layer):
             landmarks[:, 1], T.clip(landmarks[:, 1], self.half_size, self.img_shape[0] - 1 - self.half_size)
         )
 
-        imgs, updates = theano.scan(self.draw_landmarks_helper, landmarks)
+        imgs, _ = theano.scan(self.draw_landmarks_helper, landmarks)
         img = T.max(imgs, 0)
 
         return img
 
-    def get_output_for(self, input, **kwargs):
+    def get_output_for(self, input):
         output, _ = theano.scan(self.draw_landmarks, [input])
 
         return output

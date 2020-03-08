@@ -104,9 +104,7 @@ def getFaceTextureCoords(img, mean3DShape, blendshapes, idxs2D, idxs3D, detector
         ([mean3DShape[:, idxs3D], blendshapes[:, :, idxs3D]], keypoints[:, idxs2D]),
         verbose=0,
     )
-    textureCoords = projectionModel.fun([mean3DShape, blendshapes], modelParams)
-
-    return textureCoords
+    return projectionModel.fun([mean3DShape, blendshapes], modelParams)
 
 
 def bestFit(destination, source, returnTransform=False):
@@ -127,8 +125,8 @@ def bestFit(destination, source, returnTransform=False):
 
     if returnTransform:
         return T, destMean - srcMean
-    else:
-        return np.dot(srcVec.reshape((-1, 2)), T) + destMean
+
+    return np.dot(srcVec.reshape((-1, 2)), T) + destMean
 
 
 def bestFitRect(points, meanS, box=None):
