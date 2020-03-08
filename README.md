@@ -1,6 +1,5 @@
 # FaceSwap
-Based oon https://github.com/MarekKowalski/FaceSwap
- as an exercise for my students in "Mathematics in Multimedia" on the Warsaw University of Technology.
+Based oon https://github.com/MarekKowalski/FaceSwap as an exercise for my students in "Mathematics in Multimedia" on the Warsaw University of Technology.
 The app is written in Python and uses face alignment, Gauss Newton optimization and image blending to swap the face of a person seen by the camera with a face of a person in a provided image.
 
 You will find a short presentation the program's capabilities in the video below (click to go to YouTube):
@@ -10,10 +9,8 @@ You will find a short presentation the program's capabilities in the video below
 To start the program you will have to run a file named zad2.py (Polish for exercise 2), which will require:
   * Python 2.7 (I recommend Anaconda)
   * OpenCV (I used 2.4.13)
-  * Numpy
-  * dlib
-  * pygame
-  * PyOpenGL
+
+`pip install -r requirements.txt`
 
 You can download all of the libraries above either from PIP or from Christoph Gohlke's excellent website: http://www.lfd.uci.edu/~gohlke/pythonlibs/
 
